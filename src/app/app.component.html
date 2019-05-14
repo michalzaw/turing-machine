@@ -1,1 +1,38 @@
+<div>
+    Dodawanie symbolu<br/>
+    <input id="newSymbolInput" type="text" [(ngModel)]="newSymbol" />
+    <br/>
+    <button id="addSymbolButton" (click)="addSymbol()">Dodaj symbol</button>
+    <br/>
+    Dostępne symbole:<br/>
+    {{allSymbols}}
+</div>
+
+<br/>
+
+<div>
+    Liczba stanów<br/>
+    <input id="statesCountInput" type="number" min="0" [(ngModel)]="statesCount" (change)="statesCountChange()"/>
+</div>
+
+<div>
+    Tablica stanów:<br/>
+    <table>
+        <tr>
+            <th></th>
+            <th *ngFor="let state of states; index as i">
+                q{{i}}
+            </th>
+        </tr>
+        <tr *ngFor="let symbol of symbols; index as i">
+            <td>
+                {{symbol}}
+            </td>
+            <td *ngFor="let state of states">
+                {{state[i].symbol}} / q{{state[i].nextState}} / {{getDirection(i)}}
+            </td>
+        </tr>
+    </table>
+</div>
+
 <router-outlet></router-outlet>
