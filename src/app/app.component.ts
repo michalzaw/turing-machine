@@ -10,7 +10,11 @@ import { CellListElement } from 'src/CellListElement';
 export class AppComponent {
   states: State[][] = [];
   symbols: string[] = [];
-  head: CellListElement = new CellListElement();
+
+  tape: number[];
+  currentCell: number;
+  currentState: number;
+  //head: CellListElement = new CellListElement();
 
   newSymbol: string;
   allSymbols: string;
@@ -28,11 +32,18 @@ export class AppComponent {
       this.states.push(new Array(this.symbols.length));
       for (let j = 0; j < this.states[i].length; ++j) {
         this.states[i][j] = new State();
-        this.states[i][j].symbol = i + j;
+        this.states[i][j].symbol = (i + j) % this.statesCount;
         this.states[i][j].nextState = (i + 1) % this.statesCount;
-        this.states[i][j].direction = (i * j) % this.statesCount;
+        this.states[i][j].direction = 1;
       }
     }
+
+    this.tape = new Array(20);
+    for (let i = 0; i < this.tape.length; ++i) {
+      this.tape[i] = 0;
+    }
+    this.currentCell = 10;
+    this.currentState = 0;
   }
 
   addSymbol() {
@@ -62,12 +73,26 @@ export class AppComponent {
   }
 
   getDirection(index) {
-    if (index == 0) {
+    if (index == -1) {
       return "L";
     } else if (index == 1) {
       return "P";
     } else {
       return "-"
     }
+  }
+
+  next() {
+    console.log(this.currentCell);
+    console.log("symbol: " + this.tape[this.currentCell]);
+    let symbolInCurrentTapeCell = this.tape[this.currentCell];
+    let currentCellInStateTable = this.states[this.currentState][symbolInCurrentTapeCell];
+
+    this.tape[this.currentCell] = currentCellInStateTable.symbol;
+    this.currentCell += currentCellInStateTable.direction;
+    this.currentState = currentCellInStateTable.nextState;
+    
+    console.log(this.currentCell);
+    console.log("symbol: " + this.tape[this.currentCell]);
   }
 }

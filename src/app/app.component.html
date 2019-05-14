@@ -29,10 +29,29 @@
                 {{symbol}}
             </td>
             <td *ngFor="let state of states">
-                {{state[i].symbol}} / q{{state[i].nextState}} / {{getDirection(i)}}
+                {{symbols[state[i].symbol]}} / q{{state[i].nextState}} / {{getDirection(state[i].direction)}}
             </td>
         </tr>
     </table>
+</div>
+
+<br/>
+
+<div>
+    Taśma:<br/>
+    <table>
+        <tr>
+            <td *ngFor="let symbol of tape">
+                {{symbols[symbol]}}
+            </td>
+        </tr>
+        <tr>
+            <td *ngFor="let symbol of tape; index as i">
+                {{i == currentCell ? "^" : ""}}
+            </td>
+        </tr>
+    </table>
+    <button id="nextButton" (click)="next()">Następny krok</button>
 </div>
 
 <router-outlet></router-outlet>
