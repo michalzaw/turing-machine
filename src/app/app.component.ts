@@ -95,4 +95,9 @@ export class AppComponent {
     console.log(this.currentCell);
     console.log("symbol: " + this.tape[this.currentCell]);
   }
+
+  isActiveState(stateIndex: number, symbolIndex: number) {
+    if (this.currentState == stateIndex && this.tape[this.currentCell] == symbolIndex)
+    return true;
+  }
 }
