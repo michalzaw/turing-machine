@@ -8,6 +8,8 @@ import { CellListElement } from 'src/CellListElement';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  avaliableDirections: string[] = [ "L", "-", "P" ];
+
   states: State[][] = [];
   symbols: string[] = [];
 
@@ -20,6 +22,13 @@ export class AppComponent {
   allSymbols: string;
 
   statesCount: number = 0;
+
+  editedStateIndex: number = -1;
+  editedSymbolIndex: number = -1;
+
+  editedStateSelectedSymbol: string;
+  editedStateSelectedNextState: string;
+  editedStateSelectedDirection: string;
 
   constructor() {
     this.symbols.push("~");
@@ -99,5 +108,44 @@ export class AppComponent {
   isActiveState(stateIndex: number, symbolIndex: number) {
     if (this.currentState == stateIndex && this.tape[this.currentCell] == symbolIndex)
     return true;
+  }
+
+  edit(stateIndex: number, symbolIndex: number) {
+    if (this.isCellInEditMode(stateIndex, symbolIndex)) {
+      return;
+    }
+
+    this.editedStateIndex = stateIndex;
+    this.editedSymbolIndex = symbolIndex;
+
+    this.editedStateSelectedSymbol = this.symbols[this.states[stateIndex][symbolIndex].symbol];
+    this.editedStateSelectedNextState = 'q' + this.states[stateIndex][symbolIndex].nextState;
+    this.editedStateSelectedDirection = this.getDirection(this.states[stateIndex][symbolIndex].direction);
+
+    console.log("edit");
+  }
+
+  isCellInEditMode(stateIndex: number, symbolIndex: number) {
+    return this.editedStateIndex == stateIndex && this.editedSymbolIndex == symbolIndex;
+  }
+
+  editOk() {
+    this.symbols.forEach((symbol, index) => {
+      if (symbol == this.editedStateSelectedSymbol) {
+        this.states[this.editedStateIndex][this.editedSymbolIndex].symbol = index;
+      }
+    })
+
+    this.states[this.editedStateIndex][this.editedSymbolIndex].nextState = +this.editedStateSelectedNextState.substr(1);
+
+    this.avaliableDirections.forEach((direction, index) => {
+      if (direction == this.editedStateSelectedDirection) {
+        this.states[this.editedStateIndex][this.editedSymbolIndex].direction = index - 1;
+      }
+    })
+
+    this.editedStateIndex = -1;
+    this.editedSymbolIndex = -1;
+
   }
 }
