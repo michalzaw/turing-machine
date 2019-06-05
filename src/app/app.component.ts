@@ -64,6 +64,8 @@ export class AppComponent {
         this.states[i].push(new State());
       }
     }
+
+    this.newSymbol = "";
   }
 
   statesCountChange() {
@@ -82,6 +84,7 @@ export class AppComponent {
   }
 
   getDirection(index) {
+    //todo: using this.avaliableDirections array
     if (index == -1) {
       return "L";
     } else if (index == 1) {
