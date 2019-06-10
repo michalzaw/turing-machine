@@ -43,7 +43,7 @@ export class AppComponent {
         this.states[i][j] = new State();
         this.states[i][j].symbol = (i + j) % this.statesCount;
         this.states[i][j].nextState = (i + 1) % this.statesCount;
-        this.states[i][j].direction = 1;
+        this.states[i][j].direction = -1;
       }
     }
 
@@ -55,13 +55,22 @@ export class AppComponent {
     this.currentState = 0;
   }
 
+  createNewState() {
+    let state = new State();
+    state.symbol = 0;
+    state.nextState = 0;
+    state.direction = 0;
+
+    return state;
+  }
+
   addSymbol() {
     this.symbols.push(this.newSymbol);
     this.allSymbols = this.symbols.join(", ");
 
     for (let i = 0; i < this.states.length; ++i) {
       for (let j = this.states[i].length; j < this.symbols.length; ++j) {
-        this.states[i].push(new State());
+        this.states[i].push(this.createNewState());
       }
     }
 
@@ -73,7 +82,7 @@ export class AppComponent {
       for (let i = this.states.length; i < this.statesCount; ++i) {
         this.states.push(new Array(this.symbols.length));
         for (let j = 0; j < this.states[i].length; ++j) {
-          this.states[i][j] = new State();
+          this.states[i][j] = this.createNewState();
         }
       }
     } else {
@@ -95,17 +104,21 @@ export class AppComponent {
   }
 
   next() {
-    console.log(this.currentCell);
-    console.log("symbol: " + this.tape[this.currentCell]);
     let symbolInCurrentTapeCell = this.tape[this.currentCell];
     let currentCellInStateTable = this.states[this.currentState][symbolInCurrentTapeCell];
 
     this.tape[this.currentCell] = currentCellInStateTable.symbol;
     this.currentCell += currentCellInStateTable.direction;
     this.currentState = currentCellInStateTable.nextState;
-    
-    console.log(this.currentCell);
-    console.log("symbol: " + this.tape[this.currentCell]);
+
+    if (this.currentCell > this.tape.length - 3) {
+      this.tape.push(0);
+    }
+
+    if (this.currentCell < 3) {
+      this.tape.unshift(0);
+      this.currentCell++;
+    }
   }
 
   isActiveState(stateIndex: number, symbolIndex: number) {
