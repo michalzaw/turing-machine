@@ -1,12 +1,4 @@
-<div>
-    Dodawanie symbolu<br/>
-    <input id="newSymbolInput" type="text" [(ngModel)]="newSymbol" />
-    <br/>
-    <button id="addSymbolButton" (click)="addSymbol()">Dodaj symbol</button>
-    <br/>
-    Dostępne symbole:<br/>
-    {{allSymbols}}
-</div>
+<symbols [symbols]="symbols" (onSymbolAdded)="onSymbolAdded($event)"></symbols>
 
 <br/>
 

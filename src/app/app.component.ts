@@ -18,9 +18,6 @@ export class AppComponent {
   currentState: number;
   //head: CellListElement = new CellListElement();
 
-  newSymbol: string;
-  allSymbols: string;
-
   statesCount: number = 0;
 
   editedStateIndex: number = -1;
@@ -34,7 +31,6 @@ export class AppComponent {
     this.symbols.push("~");
     this.symbols.push("0");
     this.symbols.push("1");
-    this.allSymbols = this.symbols.join(", ");
 
     this.statesCount = 3;
     for (let i = 0; i < this.statesCount; ++i) {
@@ -55,6 +51,14 @@ export class AppComponent {
     this.currentState = 0;
   }
 
+  onSymbolAdded(newSymbol: string) {
+    for (let i = 0; i < this.states.length; ++i) {
+      for (let j = this.states[i].length; j < this.symbols.length; ++j) {
+        this.states[i].push(this.createNewState());
+      }
+    }
+  }
+
   createNewState() {
     let state = new State();
     state.symbol = 0;
@@ -62,19 +66,6 @@ export class AppComponent {
     state.direction = 0;
 
     return state;
-  }
-
-  addSymbol() {
-    this.symbols.push(this.newSymbol);
-    this.allSymbols = this.symbols.join(", ");
-
-    for (let i = 0; i < this.states.length; ++i) {
-      for (let j = this.states[i].length; j < this.symbols.length; ++j) {
-        this.states[i].push(this.createNewState());
-      }
-    }
-
-    this.newSymbol = "";
   }
 
   statesCountChange() {
