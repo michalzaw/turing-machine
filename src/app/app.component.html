@@ -2,63 +2,10 @@
 
 <br/>
 
-<div>
-    Liczba stanów<br/>
-    <input id="statesCountInput" type="number" min="0" [(ngModel)]="statesCount" (change)="statesCountChange()"/>
-</div>
-
-<div>
-    Tablica stanów:<br/>
-    <table>
-        <tr>
-            <th></th>
-            <th *ngFor="let state of states; index as i">
-                q{{i}}
-            </th>
-        </tr>
-        <tr *ngFor="let symbol of symbols; index as i">
-            <td>
-                {{symbol}}
-            </td>
-            <td *ngFor="let state of states, index as j" [ngClass]="{activeState: isActiveState(j, i)}">
-                <div *ngIf="!isCellInEditMode(j, i)" (click)="edit(j, i)">
-                    {{symbols[state[i].symbol]}} / q{{state[i].nextState}} / {{getDirection(state[i].direction)}}
-                </div>
-                <div *ngIf="isCellInEditMode(j, i)">
-                    <select [(ngModel)]="editedStateSelectedSymbol">
-                        <option *ngFor="let s of symbols">{{s}}</option>
-                    </select>
-                    <select [(ngModel)]="editedStateSelectedNextState">
-                        <option *ngFor="let s of states; index as i">q{{i}}</option>
-                    </select>
-                    <select [(ngModel)]="editedStateSelectedDirection">
-                        <option *ngFor="let d of avaliableDirections">{{d}}</option>
-                    </select>
-                    <br/>
-                    <button (click)="editOk()">OK</button>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
+<state-array [states]="states" [symbols]="symbols" [tape]="tape" [currentCell]="currentCell" [currentState]="currentState"></state-array>
 
 <br/>
 
-<div>
-    Taśma:<br/>
-    <table>
-        <tr>
-            <td *ngFor="let symbol of tape">
-                {{symbols[symbol]}}
-            </td>
-        </tr>
-        <tr>
-            <td *ngFor="let symbol of tape; index as i">
-                {{i == currentCell ? "^" : ""}}
-            </td>
-        </tr>
-    </table>
-    <button id="nextButton" (click)="next()">Następny krok</button>
-</div>
+<tape [states]="states" [tape]="tape" [symbols]="symbols" [currentCell]="currentCell" [currentState]="currentState" (onStateChanged)="onStateChanged($event)"></tape>
 
 <router-outlet></router-outlet>

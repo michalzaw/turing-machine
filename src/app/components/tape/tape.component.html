@@ -1,0 +1,16 @@
+<div>
+    Taśma:<br/>
+    <table>
+        <tr>
+            <td *ngFor="let symbol of tape">
+                {{symbols[symbol]}}
+            </td>
+        </tr>
+        <tr>
+            <td *ngFor="let symbol of tape; index as i">
+                {{i == currentCell ? "^" : ""}}
+            </td>
+        </tr>
+    </table>
+    <button id="nextButton" (click)="next()">Następny krok</button>
+</div>
