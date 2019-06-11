@@ -44,7 +44,7 @@ export class AppComponent {
   onSymbolAdded(newSymbol: string) {
     for (let i = 0; i < this.states.length; ++i) {
       for (let j = this.states[i].length; j < this.symbols.length; ++j) {
-        this.states[i].push(this.createNewState());
+        this.states[i].push(new State());
       }
     }
   }
@@ -53,12 +53,7 @@ export class AppComponent {
     this.currentState = currentState;
   }
 
-  createNewState() {
-    let state = new State();
-    state.symbol = 0;
-    state.nextState = 0;
-    state.direction = 0;
-
-    return state;
+  onCellChanged(currentCell: number) {
+    this.currentCell = currentCell;
   }
 }

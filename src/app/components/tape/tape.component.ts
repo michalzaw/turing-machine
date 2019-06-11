@@ -16,6 +16,7 @@ export class TapeComponent implements OnInit {
   @Input() currentState: number;
   
   @Output() onStateChanged: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onCellChanged: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -40,6 +41,7 @@ export class TapeComponent implements OnInit {
     }
 
     this.onStateChanged.emit(this.currentState);
+    this.onCellChanged.emit(this.currentCell);
   }
 
 }

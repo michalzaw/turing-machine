@@ -32,14 +32,7 @@ export class StateArrayComponent implements OnInit {
   }
 
   getDirection(index) {
-    //todo: using this.avaliableDirections array
-    if (index == -1) {
-      return "L";
-    } else if (index == 1) {
-      return "P";
-    } else {
-      return "-"
-    }
+    return this.avaliableDirections[index + 1];
   }
 
   isActiveState(stateIndex: number, symbolIndex: number) {
@@ -50,22 +43,12 @@ export class StateArrayComponent implements OnInit {
     return this.editedStateIndex == stateIndex && this.editedSymbolIndex == symbolIndex;
   }
 
-  createNewState() {
-    //todo: taka sama funkcja jak w app.component
-    let state = new State();
-    state.symbol = 0;
-    state.nextState = 0;
-    state.direction = 0;
-
-    return state;
-  }
-
   statesCountChange() {
     if (this.states.length < this.statesCount) {
       for (let i = this.states.length; i < this.statesCount; ++i) {
         this.states.push(new Array(this.symbols.length));
         for (let j = 0; j < this.states[i].length; ++j) {
-          this.states[i][j] = this.createNewState();
+          this.states[i][j] = new State();
         }
       }
     } else {
@@ -86,8 +69,6 @@ export class StateArrayComponent implements OnInit {
     this.editedStateSelectedSymbol = this.symbols[this.states[stateIndex][symbolIndex].symbol];
     this.editedStateSelectedNextState = 'q' + this.states[stateIndex][symbolIndex].nextState;
     this.editedStateSelectedDirection = this.getDirection(this.states[stateIndex][symbolIndex].direction);
-
-    console.log("edit");
   }
 
 

@@ -6,6 +6,6 @@
 
 <br/>
 
-<tape [states]="states" [tape]="tape" [symbols]="symbols" [currentCell]="currentCell" [currentState]="currentState" (onStateChanged)="onStateChanged($event)"></tape>
+<tape [states]="states" [tape]="tape" [symbols]="symbols" [currentCell]="currentCell" [currentState]="currentState" (onStateChanged)="onStateChanged($event)" (onCellChanged)="onCellChanged($event)"></tape>
 
 <router-outlet></router-outlet>
