@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TapeElementComponent {
   @Input() filled: boolean;
+  @Input() opacity = 1;
 
   constructor() { }
 }
