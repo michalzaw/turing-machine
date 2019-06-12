@@ -1,0 +1,16 @@
+.container {
+    margin: 0px 8px 8px 8px;
+    width: 259px;
+}
+
+#tapeInput {
+    margin-top: 16px;
+    border: 2px dashed #25D4E1;
+    padding: 4px 3px 4px 3px;
+    width: 248px;
+}
+
+#tapeInput:focus {
+    outline: none;
+    border: 2px solid #25D4E1;
+}

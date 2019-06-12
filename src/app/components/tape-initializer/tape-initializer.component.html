@@ -1,3 +1,5 @@
-<input [(ngModel)]="tapeInitState" />
-<br/>
-<button (click)="initTape()">Zainicjalizuj taśmę</button>
+<div class="container">
+    <app-gradient-button (buttonPressed)="initTape()">Zainicjalizuj taśmę</app-gradient-button>
+    <br />
+    <input id="tapeInput" [(ngModel)]="tapeInitState" />
+</div>

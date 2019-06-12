@@ -1,6 +1,5 @@
-<app-tape-initializer (tapeInitialized)="initTapeFromString($event)"></app-tape-initializer>
-
 <symbols [symbols]="symbols" (onSymbolAdded)="onSymbolAdded($event)"></symbols>
+<app-tape-initializer (tapeInitialized)="initTapeFromString($event)"></app-tape-initializer>
 
 <div id="main-context">
     <state-array [states]="states" [symbols]="symbols" [tape]="tape" [currentCell]="currentCell"
