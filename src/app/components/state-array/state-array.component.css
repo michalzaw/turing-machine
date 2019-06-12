@@ -1,5 +1,6 @@
 table {
   border-collapse: collapse;
+  display: inline-block;
 }
 
 table, th, td {
@@ -13,4 +14,10 @@ th, td {
   
 .activeState {
   background-color: #E8FAFB;
+}
+
+.empty-button {
+  outline: none;
+  border: none;
+  background: white;
 }

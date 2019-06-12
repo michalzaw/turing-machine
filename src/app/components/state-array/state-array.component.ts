@@ -14,7 +14,7 @@ export class StateArrayComponent implements OnInit {
   @Input() currentCell: number;
   @Input() currentState: number;
 
-  avaliableDirections: string[] = [ "L", "-", "P" ];
+  avaliableDirections: string[] = ["L", "-", "P"];
 
   statesCount: number = 0;
 
@@ -29,6 +29,16 @@ export class StateArrayComponent implements OnInit {
 
   ngOnInit() {
     this.statesCount = this.states.length;
+  }
+
+  incSize() {
+    this.statesCount++;
+    this.statesCountChange();
+  }
+
+  decSize() {
+    this.statesCount--;
+    this.statesCountChange();
   }
 
   getDirection(index) {
