@@ -33,6 +33,10 @@ export class AppComponent {
       }
     }
 
+    this.initTape();
+  }
+
+  initTape() {
     this.tape = new Array(20);
     for (let i = 0; i < this.tape.length; ++i) {
       this.tape[i] = 0;
@@ -65,5 +69,9 @@ export class AppComponent {
       this.tape.unshift(0);
       this.currentCell++;
     }
+  }
+
+  reset() {
+    this.initTape();
   }
 }
