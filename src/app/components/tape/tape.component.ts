@@ -31,11 +31,11 @@ export class TapeComponent implements OnInit {
     this.currentCell += currentCellInStateTable.direction;
     this.currentState = currentCellInStateTable.nextState;
 
-    if (this.currentCell > this.tape.length - 3) {
+    if (this.currentCell > this.tape.length - 10) {
       this.tape.push(0);
     }
 
-    if (this.currentCell < 3) {
+    if (this.currentCell < 10) {
       this.tape.unshift(0);
       this.currentCell++;
     }
