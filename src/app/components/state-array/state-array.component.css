@@ -1,12 +1,16 @@
+table {
+  border-collapse: collapse;
+}
+
 table, th, td {
-    border: 1px solid black;
-  }
+  border: 2px solid #25D4E1;
+}
   
-  th, td {
-    padding: 15px;
-    text-align: center;
-  }
+th, td {
+  padding: 9px;
+  text-align: center;
+}
   
-  .activeState {
-    background-color: #d5d5d5;
-  }
+.activeState {
+  background-color: #E8FAFB;
+}

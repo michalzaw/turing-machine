@@ -1,10 +1,9 @@
 <div>
-    Liczba stanów<br/>
-    <input id="statesCountInput" type="number" min="0" [(ngModel)]="statesCount" (change)="statesCountChange()"/>
+    Liczba stanów<br />
+    <input id="statesCountInput" type="number" min="0" [(ngModel)]="statesCount" (change)="statesCountChange()" />
 </div>
 
 <div>
-    Tablica stanów:<br/>
     <table>
         <tr>
             <th></th>
@@ -30,7 +29,7 @@
                     <select [(ngModel)]="editedStateSelectedDirection">
                         <option *ngFor="let d of avaliableDirections">{{d}}</option>
                     </select>
-                    <br/>
+                    <br />
                     <button (click)="editOk()">OK</button>
                 </div>
             </td>
