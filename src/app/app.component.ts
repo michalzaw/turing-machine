@@ -78,6 +78,8 @@ export class AppComponent {
   }
 
   initTapeFromString(tapeInitState: string) {
+    this.reset();
+
     for (let i = 0; i < tapeInitState.length; i++) {
       let symbol = tapeInitState.charAt(i);
       
