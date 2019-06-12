@@ -2,13 +2,14 @@
 
 <symbols [symbols]="symbols" (onSymbolAdded)="onSymbolAdded($event)"></symbols>
 
-<br/>
+<div id="main-context">
+    <state-array [states]="states" [symbols]="symbols" [tape]="tape" [currentCell]="currentCell"
+        [currentState]="currentState"></state-array>
+    <div class="buttons-center">
+        <app-gradient-button (click)="next()">Następny krok</app-gradient-button><br />
+        <app-gradient-button (click)="reset()">Restart maszyny</app-gradient-button>
+    </div>
+</div>
 
-<state-array [states]="states" [symbols]="symbols" [tape]="tape" [currentCell]="currentCell" [currentState]="currentState"></state-array>
-
-<br/>
-
-<tape [states]="states" [tape]="tape" [symbols]="symbols" [currentCell]="currentCell" [currentState]="currentState"></tape>
-
-<button id="nextButton" (click)="next()">Następny krok</button>
-<button id="resetButton" (click)="reset()">Restart maszyny</button>
+<tape [states]="states" [tape]="tape" [symbols]="symbols" [currentCell]="currentCell" [currentState]="currentState">
+</tape>

@@ -1,0 +1,18 @@
+tape {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translate(-50%, 0);
+}
+
+#main-context {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttons-center {
+    width: 259px;
+    margin: 0 auto;
+}
