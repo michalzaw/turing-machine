@@ -8,6 +8,7 @@ import { StateArrayComponent } from './components/state-array/state-array.compon
 import { TapeComponent } from './components/tape/tape.component';
 import { GradientButtonComponent } from './components/gradient-button/gradient-button.component';
 import { TapeElementComponent } from './components/tape-element/tape-element.component';
+import { TapeInitializerComponent } from './components/tape-initializer/tape-initializer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TapeElementComponent } from './components/tape-element/tape-element.com
     StateArrayComponent,
     TapeComponent,
     GradientButtonComponent,
-    TapeElementComponent
+    TapeElementComponent,
+    TapeInitializerComponent
   ],
   imports: [
     BrowserModule,
