@@ -1,0 +1,6 @@
+tape {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translate(-50%, 0);
+}
