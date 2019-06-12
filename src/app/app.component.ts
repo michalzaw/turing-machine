@@ -80,8 +80,9 @@ export class AppComponent {
   initTapeFromString(tapeInitState: string) {
     this.reset();
 
-    for (let i = 0; i < tapeInitState.length; i++) {
-      let symbol = tapeInitState.charAt(i);
+    let tapeInitStateSymbols = tapeInitState.split(" ");
+    for (let i = 0; i < tapeInitStateSymbols.length; i++) {
+      let symbol = tapeInitStateSymbols[i];
       
       for (let j = 0; j < this.symbols.length; ++j) {
         if (symbol == this.symbols[j]) {

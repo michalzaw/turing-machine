@@ -20,6 +20,8 @@ export class TapeInitializerComponent implements OnInit {
 
   initTape() {
     this.tapeInitialized.emit(this.tapeInitState);
+
+    this.tapeInitState = "";
   }
 
 }
