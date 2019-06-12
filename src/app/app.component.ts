@@ -49,11 +49,21 @@ export class AppComponent {
     }
   }
 
-  onStateChanged(currentState: number) {
-    this.currentState = currentState;
-  }
+  next() {
+    let symbolInCurrentTapeCell = this.tape[this.currentCell];
+    let currentCellInStateTable = this.states[this.currentState][symbolInCurrentTapeCell];
 
-  onCellChanged(currentCell: number) {
-    this.currentCell = currentCell;
+    this.tape[this.currentCell] = currentCellInStateTable.symbol;
+    this.currentCell += currentCellInStateTable.direction;
+    this.currentState = currentCellInStateTable.nextState;
+
+    if (this.currentCell > this.tape.length - 10) {
+      this.tape.push(0);
+    }
+
+    if (this.currentCell < 10) {
+      this.tape.unshift(0);
+      this.currentCell++;
+    }
   }
 }

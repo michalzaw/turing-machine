@@ -6,4 +6,6 @@
 
 <br/>
 
-<tape [states]="states" [tape]="tape" [symbols]="symbols" [currentCell]="currentCell" [currentState]="currentState" (onStateChanged)="onStateChanged($event)" (onCellChanged)="onCellChanged($event)"></tape>
+<tape [states]="states" [tape]="tape" [symbols]="symbols" [currentCell]="currentCell" [currentState]="currentState"></tape>
+
+<button id="nextButton" (click)="next()">Następny krok</button>
