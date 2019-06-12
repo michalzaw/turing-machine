@@ -1,9 +1,4 @@
 <div>
-    Liczba stanów<br />
-    <input id="statesCountInput" type="number" min="0" [(ngModel)]="statesCount" (change)="statesCountChange()" />
-</div>
-
-<div>
     <table>
         <tr>
             <th></th>
@@ -35,4 +30,6 @@
             </td>
         </tr>
     </table>
+    <button class="empty-button" (click)="decSize()"><img src="assets/arrow_left.png" alt="Zmniejsz"></button>
+    <button class="empty-button" (click)="incSize()"><img src="assets/arrow_right.png" alt="Zwiększ"></button>
 </div>
