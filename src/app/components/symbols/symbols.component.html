@@ -1,12 +1,10 @@
-<div>
-    <button id="addSymbolButton" (click)="addSymbol()">Dodaj symbol</button>
-    <br/>
+<div class="container">
+    <app-gradient-button (buttonPressed)="addSymbol()">Dodaj symbol</app-gradient-button>
+    <br />
     <input id="newSymbolInput" type="text" [(ngModel)]="newSymbol" />
-    <br/>
-    Dostępne symbole:<br/>
-    <ul>
-        <li *ngFor="let symbol of symbols">
-            {{symbol}}
-        </li>
-    </ul>
+    <br />
+    <div class="list-of-elements">
+        Dostępne symbole:<br />
+        <span *ngFor="let symbol of symbols">- {{symbol}} <br /></span>
+    </div>
 </div>
