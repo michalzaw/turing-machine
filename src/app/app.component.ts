@@ -17,6 +17,8 @@ export class AppComponent {
 
   statesCount: number = 0;
 
+  beginCellOnTape: number = 10;
+
   constructor() {
     this.symbols.push("~");
     this.symbols.push("0");
@@ -29,7 +31,7 @@ export class AppComponent {
         this.states[i][j] = new State();
         this.states[i][j].symbol = (i + j) % this.statesCount;
         this.states[i][j].nextState = (i + 1) % this.statesCount;
-        this.states[i][j].direction = -1;
+        this.states[i][j].direction = 1;
       }
     }
 
@@ -41,7 +43,7 @@ export class AppComponent {
     for (let i = 0; i < this.tape.length; ++i) {
       this.tape[i] = 0;
     }
-    this.currentCell = 10;
+    this.currentCell = this.beginCellOnTape;
     this.currentState = 0;
   }
 
@@ -78,7 +80,12 @@ export class AppComponent {
   initTapeFromString(tapeInitState: string) {
     for (let i = 0; i < tapeInitState.length; i++) {
       let symbol = tapeInitState.charAt(i);
-      console.log(symbol);
+      
+      for (let j = 0; j < this.symbols.length; ++j) {
+        if (symbol == this.symbols[j]) {
+          this.tape[this.beginCellOnTape + i] = j;
+        }
+      }
     }
   }
 }
